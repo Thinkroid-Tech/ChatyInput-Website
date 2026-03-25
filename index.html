@@ -494,23 +494,84 @@
         .reveal.visible { opacity: 1; transform: none; }
 
         /* ── Responsive ── */
+        /* ── Tablet ── */
         @media (max-width: 900px) {
-            .feature-section { grid-template-columns: 1fr; gap: 32px; }
+            .hero { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+            .hero-text { padding-top: 0; }
+            .hero h1 { font-size: clamp(32px, 6vw, 48px); }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-product { max-width: 320px; margin: 0 auto; }
+            .feature-section { grid-template-columns: 1fr; gap: 32px; padding: 56px 32px; }
             .feature-section.reverse .feature-text,
             .feature-section.reverse .feature-visual { order: unset; }
+            .feature-visual { min-height: 260px; }
             .platform-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-steps { grid-template-columns: repeat(2, 1fr); }
             .pw-side { display: none; }
         }
+
+        /* ── Mobile ── */
         @media (max-width: 640px) {
-            .hero { padding: 120px 20px 60px; grid-template-columns: 1fr; }
-            .hero-product { max-width: 340px; margin: 0 auto; }
+            /* Nav */
+            nav { padding: 12px 16px; }
             .nav-right a:not(.nav-cta) { display: none; }
-            .how-steps { grid-template-columns: 1fr; }
-            .how-steps { gap: 24px; }
-            .platform-grid { grid-template-columns: 1fr; }
-            .hero-product { padding: 24px 16px 0; border-radius: 14px; }
-            .product-window { border-radius: 10px 10px 0 0; }
+            .nav-cta { padding: 6px 14px !important; font-size: 12px !important; }
+
+            /* Hero */
+            .hero { padding: 100px 16px 40px; gap: 24px; }
+            .hero h1 { font-size: 32px; }
+            .hero-sub { font-size: 15px; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+            .hero-product { max-width: 280px; }
+            .product-window { width: 280px; min-width: 280px; max-width: 280px; }
+            .pw-chat-area { min-height: 120px; padding: 10px 14px; }
+            .pw-buffer { height: 120px; font-size: 11px; padding: 10px 12px; }
+            .pw-ime { padding: 10px 12px 14px; }
+            .pw-rec { width: 36px; height: 36px; }
+            .pw-rec svg { width: 16px; height: 16px; }
+            .pw-edit-btn { width: 28px; height: 28px; }
+            .pw-edit-btn svg { width: 12px; height: 12px; }
+            .pw-btn { padding: 6px 12px; font-size: 10px; }
+            .pw-status { font-size: 10px; }
+            .speaking-person { max-width: 280px; }
+            .sp-avatar { width: 32px; height: 32px; }
+            .sp-bubble { padding: 8px 12px; }
+            .sp-text { font-size: 11px; }
+
+            /* Features */
+            .feature-section { padding: 48px 16px; gap: 24px; }
+            .feature-section + .feature-section { border-top: none; }
+            .feature-text h2 { font-size: 24px; }
+            .feature-text p { font-size: 14px; }
+            .feature-visual { min-height: 220px; border-radius: 12px; }
+            .fv-inner { padding: 24px; }
+
+            /* How It Works */
+            .how-section { padding: 64px 16px; }
+            .how-inner h2 { font-size: 28px; }
+            .how-steps { grid-template-columns: 1fr; gap: 24px; }
+            .how-num { font-size: 36px; }
+            .how-step h3 { font-size: 16px; }
+            .how-step p { font-size: 13px; }
+
+            /* Platforms */
+            .platforms-section { padding: 56px 16px; }
+            .platforms-section h2 { font-size: 28px; }
+            .platform-grid { grid-template-columns: 1fr; gap: 12px; }
+            .plat-card { padding: 24px 20px; }
+
+            /* Open Source */
+            .oss-section { padding: 56px 16px; }
+            .oss-inner h2 { font-size: 28px; }
+            .oss-inner p { font-size: 14px; }
             .oss-stats { gap: 24px; flex-wrap: wrap; }
+            .oss-stat-val { font-size: 24px; }
+
+            /* Footer */
+            footer { padding: 16px; }
+            .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
         }
     </style>
 </head>
