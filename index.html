@@ -28,7 +28,7 @@
             --font: 'General Sans', -apple-system, system-ui, sans-serif;
         }
 
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         body { font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.5; overflow-x: hidden; }
         img { display: block; max-width: 100%; }
         a { color: inherit; }
@@ -367,6 +367,8 @@
             padding: 100px 32px;
             color: #fff;
             position: relative;
+            overflow: hidden;
+            width: 100%;
         }
         .how-section::before {
             content: '';
@@ -549,8 +551,9 @@
             .fv-inner { padding: 24px; }
 
             /* How It Works */
-            .how-section { padding: 64px 16px; }
-            .how-inner h2 { font-size: 28px; }
+            .how-section { padding: 48px 24px; width: 100%; overflow: hidden; }
+            .how-inner { max-width: 100%; overflow: hidden; }
+            .how-inner h2 { font-size: 24px; }
             .how-steps { grid-template-columns: 1fr; gap: 24px; }
             .how-num { font-size: 36px; }
             .how-step h3 { font-size: 16px; }
@@ -736,6 +739,11 @@
                     <span class="intent-label">send</span>
                     <span class="intent-val">"OK, send it"</span>
                 </div>
+                <div class="intent-card">
+                    <div class="intent-dot" style="background:#a855f7;"></div>
+                    <span class="intent-label">undo</span>
+                    <span class="intent-val">"Undo that" / "Revert"</span>
+                </div>
             </div>
         </div>
     </div>
@@ -842,7 +850,69 @@
     </div>
 </section>
 
-<!-- Feature 6: Cross-platform -->
+<!-- Feature 6: Hands-free VAD -->
+<section class="feature-section reverse reveal">
+    <div class="feature-text">
+        <span class="feature-tag">Hands-free Mode</span>
+        <h2>Just start talking</h2>
+        <p>Local voice activity detection powered by Silero VAD — no cloud, no latency. The app listens on-device and automatically detects when you start and stop speaking. Each segment is transcribed and processed independently. Adjustable silence threshold from 0.5s to 3s.</p>
+    </div>
+    <div class="feature-visual">
+        <div class="fv-inner" style="text-align:center;">
+            <div style="display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;">
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #383838;border-radius:8px;padding:12px 16px;">
+                    <div style="width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0;"></div>
+                    <span style="font-size:13px;color:#eee;">PTT (Hold to Record)</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #383838;border-radius:8px;padding:12px 16px;">
+                    <div style="width:10px;height:10px;border-radius:50%;background:#3b82f6;flex-shrink:0;"></div>
+                    <span style="font-size:13px;color:#eee;">Toggle (Tap to Record)</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid var(--accent);border-radius:8px;padding:12px 16px;">
+                    <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pulse-red 1.5s ease-in-out infinite;"></div>
+                    <span style="font-size:13px;color:#eee;font-weight:600;">Hands-free (VAD)</span>
+                    <span style="font-size:10px;color:#888;margin-left:auto;">NEW</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature 7: Parallel + Undo -->
+<section class="feature-section reveal">
+    <div class="feature-text">
+        <span class="feature-tag">Parallel Recording & Undo</span>
+        <h2>Never wait, always recoverable</h2>
+        <p>Start recording the next segment while the previous one is still processing — STT runs in parallel, LLM processes as a queue. Made a mistake? Say "undo" to revert to the previous version. Up to 30 levels of undo history, cleared on send.</p>
+    </div>
+    <div class="feature-visual">
+        <div class="fv-inner">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <div style="background:#22c55e;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;">STT</div>
+                    <div style="flex:1;height:6px;background:#22c55e;border-radius:3px;opacity:0.6;"></div>
+                    <span style="font-size:11px;color:#888;">Segment 1</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <div style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;">STT</div>
+                    <div style="flex:1;height:6px;background:#3b82f6;border-radius:3px;opacity:0.6;"></div>
+                    <span style="font-size:11px;color:#888;">Segment 2</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                    <div style="background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;">LLM</div>
+                    <div style="flex:1;height:6px;background:var(--accent);border-radius:3px;opacity:0.4;"></div>
+                    <span style="font-size:11px;color:#888;">Queue (FIFO)</span>
+                </div>
+                <div style="border-top:1px solid #333;margin-top:8px;padding-top:12px;display:flex;align-items:center;gap:10px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/></svg>
+                    <span style="font-size:13px;color:#ddd;">Say "undo" — 30 levels of history</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature 8: Cross-platform -->
 <section class="feature-section reverse reveal">
     <div class="feature-text">
         <span class="feature-tag">Cross-Platform</span>
@@ -898,6 +968,46 @@
                 <div class="how-num">04</div>
                 <h3>Send</h3>
                 <p>Say "send" and the text goes directly into the active app — Slack, Gmail, VS Code, any text field. Native text input on every platform.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Roadmap -->
+<section class="platforms-section">
+    <div class="reveal">
+        <span class="section-tag">Roadmap</span>
+        <h2>What's coming next</h2>
+        <div class="platform-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;">
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Platforms</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">macOS, iOS &amp; Windows</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Native apps for all major platforms. macOS menu bar, iOS standalone app, Windows system tray. Same voice-to-text workflow everywhere.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Streaming</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Real-time STT</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">WebSocket streaming with Deepgram and Google Cloud Speech. See text appear as you speak. Optional alongside Whisper batch mode.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Security</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Voiceprint Auth</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Local voiceprint verification so only your voice can control the app. Runs on-device, no cloud biometric data.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Extensibility</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Plugin System</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">JavaScript plugin engine with hooks at every stage — translate before sending, inject RAG context, apply templates, trigger automations.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">AI</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Silero VAD v6</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Upgrade from v4 to v6 for improved speech detection accuracy. Pending ONNX export fix for LSTM state compatibility.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Community</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Plugin Store</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Community plugin directory. Share and discover plugins for translation, automation, custom STT/LLM providers, and more.</p>
             </div>
         </div>
     </div>
