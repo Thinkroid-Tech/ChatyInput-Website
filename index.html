@@ -576,6 +576,38 @@
             footer { padding: 16px; }
             .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
         }
+
+        /* ── Collapsible sections ── */
+        .section-collapsed .collapsible-item { display: none; }
+        .section-collapsed .collapsible-item.visible-item { display: block; }
+        .show-more-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 24px auto 0;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink-2);
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .show-more-btn:hover {
+            border-color: #bbb;
+            color: var(--ink);
+        }
+        .show-more-btn svg {
+            width: 16px; height: 16px;
+            transition: transform .2s;
+        }
+        .show-more-btn.expanded svg {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -589,6 +621,7 @@
         <div class="nav-right">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
+            <a href="#roadmap">Roadmap</a>
             <a href="#download">Download</a>
             <a href="https://github.com/ChatyInput-org" class="nav-cta" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" style="margin-right:2px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg>
@@ -690,7 +723,7 @@
     <div class="feature-text">
         <span class="feature-tag">Speech-to-Text</span>
         <h2>Your voice, transcribed instantly</h2>
-        <p>Powered by Whisper API with switchable providers. Use OpenAI Whisper, or bring your own Whisper-compatible endpoint. Multi-language support follows your system settings — Chinese, English, Japanese, Korean, and more. The language hint is passed to Whisper for significantly better accuracy.</p>
+        <p>Switchable STT providers — use OpenAI Whisper, Deepgram, or bring your own compatible endpoint. Multi-language support follows your system settings — Chinese, English, Japanese, Korean, and more. The language hint is passed to the ASR model for significantly better accuracy.</p>
     </div>
     <div class="feature-visual">
         <div class="fv-inner">
@@ -754,7 +787,7 @@
     <div class="feature-text">
         <span class="feature-tag">Bring Your Own Provider</span>
         <h2>Works with any AI service</h2>
-        <p>Use OpenAI, Claude, or any OpenAI-compatible endpoint for the LLM. Use Whisper or any Whisper-compatible API for STT. Self-host your models, use a local LLM, or connect to your company's private endpoint — ChatyInput doesn't lock you in.</p>
+        <p>Use OpenAI, Claude, or any OpenAI-compatible endpoint for the LLM. Use any Whisper-compatible or streaming STT API for speech recognition. Self-host your models, use a local LLM, or connect to your company's private endpoint — ChatyInput doesn't lock you in.</p>
     </div>
     <div class="feature-visual">
         <div class="fv-inner">
@@ -957,12 +990,12 @@
             <div class="how-step">
                 <div class="how-num">02</div>
                 <h3>Process</h3>
-                <p>Whisper transcribes your speech. The LLM classifies intent, auto-corrects errors, applies your custom dictionary, and updates the buffer.</p>
+                <p>Your speech-to-text model transcribes your voice. The LLM classifies intent, auto-corrects errors, applies your custom dictionary, and updates the buffer.</p>
             </div>
             <div class="how-step">
                 <div class="how-num">03</div>
-                <h3>Edit</h3>
-                <p>Hold the edit button to refine. Say "change 3 to 5" or "rewrite as a formal email" — the LLM modifies the buffer while preserving your intent.</p>
+                <h3>Edit (optional)</h3>
+                <p>Happy with the result? Skip straight to send. Want to refine? Hold the edit button — say "change 3 to 5" or "rewrite as a formal email" and the LLM updates the buffer.</p>
             </div>
             <div class="how-step">
                 <div class="how-num">04</div>
@@ -974,11 +1007,11 @@
 </section>
 
 <!-- Roadmap -->
-<section class="platforms-section">
+<section class="platforms-section" id="roadmap">
     <div class="reveal">
         <span class="section-tag">Roadmap</span>
         <h2>What's coming next</h2>
-        <div class="platform-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;">
+        <div id="roadmap-grid" class="platform-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;">
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Platforms</div>
                 <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">macOS, iOS &amp; Windows</h3>
@@ -987,7 +1020,7 @@
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Streaming</div>
                 <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Real-time STT</h3>
-                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">WebSocket streaming with Deepgram and Google Cloud Speech. See text appear as you speak. Optional alongside Whisper batch mode.</p>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">WebSocket streaming with Deepgram and Google Cloud Speech. See text appear as you speak. Optional alongside batch mode STT.</p>
             </div>
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Security</div>
@@ -1005,9 +1038,44 @@
                 <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Upgrade from v4 to v6 for improved speech detection accuracy. Pending ONNX export fix for LSTM state compatibility.</p>
             </div>
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Accessibility</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Whisper Speech Mode</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Adaptive gain and optimized VAD sensitivity for quiet environments. Works when you whisper in a library, office, or late at night.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Productivity</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Meeting Notes</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Speaker diarization powered by voiceprint — automatically label who said what. LLM summarizes, extracts action items, and generates meeting minutes.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Community</div>
                 <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Plugin Store</h3>
                 <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Community plugin directory. Share and discover plugins for translation, automation, custom STT/LLM providers, and more.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Context</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Smart Mode Switching</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Auto-switch modes based on the active app, scene, or GPS location. Business English in Slack, casual Chinese in WeChat, local language near travel destinations.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Personalization</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Custom Modes</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Create preset profiles with unique prompts, language, dictionary, and tone. Switch between business email, casual chat, technical docs, and meeting notes instantly.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Learning</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Continuous AI Learning</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">AI summarizes your past inputs, auto-adds frequent words to your dictionary, and refines prompts to match your speaking style. All data stays local.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Social Intelligence</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Reply Suggestions</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">AI reads the room — suggests polite phrasing for formal emails, hints at reading the air in Japanese business, and softens tone when emotions run high.</p>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Website</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Feature Voting</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Upvote or downvote features and roadmap items directly on the website. Most requested features rise to the top. IP + device fingerprint rate limiting to prevent abuse.</p>
             </div>
         </div>
     </div>
@@ -1274,6 +1342,69 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     }
 
     setTimeout(runDemo, 1000);
+})();
+
+// Collapsible sections
+(function() {
+    function setupCollapsible(containerSelector, maxVisible) {
+        var container = document.querySelector(containerSelector);
+        if (!container) return;
+        var items = container.children;
+        if (items.length <= maxVisible) return;
+
+        // Mark items beyond threshold
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.add('collapsible-item');
+            if (i < maxVisible) items[i].classList.add('visible-item');
+        }
+        container.classList.add('section-collapsed');
+
+        // Create show more button
+        var btn = document.createElement('button');
+        btn.className = 'show-more-btn';
+        var hiddenCount = items.length - maxVisible;
+        btn.textContent = 'Show ' + hiddenCount + ' more';
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke-linecap', 'round');
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M6 9l6 6 6-6');
+        svg.appendChild(path);
+        btn.appendChild(svg);
+
+        container.parentNode.insertBefore(btn, container.nextSibling);
+
+        var expanded = false;
+        btn.addEventListener('click', function() {
+            expanded = !expanded;
+            if (expanded) {
+                container.classList.remove('section-collapsed');
+                btn.classList.add('expanded');
+                btn.childNodes[0].textContent = 'Show less';
+            } else {
+                container.classList.add('section-collapsed');
+                btn.classList.remove('expanded');
+                btn.childNodes[0].textContent = 'Show ' + hiddenCount + ' more';
+            }
+        });
+    }
+
+    // Features: collapse after 15 (currently 8, won't trigger yet)
+    // Count feature-section elements between #features and #how-it-works
+    var featureSections = document.querySelectorAll('.feature-section');
+    if (featureSections.length > 15) {
+        var featuresWrapper = document.createElement('div');
+        featuresWrapper.id = 'features-wrapper';
+        featureSections[0].parentNode.insertBefore(featuresWrapper, featureSections[0]);
+        featureSections.forEach(function(s) { featuresWrapper.appendChild(s); });
+        setupCollapsible('#features-wrapper', 15);
+    }
+
+    // Roadmap: collapse after 30 (currently ~15, won't trigger yet)
+    setupCollapsible('#roadmap-grid', 30);
 })();
 </script>
 </body>
