@@ -978,29 +978,45 @@
     </div>
 </section>
 
-<!-- Supported Languages -->
-<section class="platforms-section" id="languages">
-    <div class="reveal">
-        <span class="section-tag">Languages</span>
+<!-- Feature 9: Languages -->
+<section class="feature-section reveal" id="languages">
+    <div class="feature-text">
+        <span class="feature-tag">Multi-language</span>
         <h2>Speak in any language</h2>
-        <p style="font-size:16px;color:var(--ink-2);line-height:1.6;max-width:640px;margin-bottom:32px;">UI and prompts available in <strong>10 languages</strong>. Speech recognition supports <strong>99 languages</strong> via Whisper.</p>
-
-        <h3 style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:16px;">UI &amp; Prompts</h3>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">English</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">Fran&ccedil;ais</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">Espa&ntilde;ol</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#31616;&#20307;&#20013;&#25991;</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#32321;&#39636;&#20013;&#25991;</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">Portugu&ecirc;s</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#26085;&#26412;&#35486;</span>
-            <span style="padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;background:var(--card);">&#54620;&#44397;&#50612;</span>
+        <p>UI and prompts in <strong>10 languages</strong>. Speech recognition supports <strong>99 languages</strong> via Whisper. The language hint is passed to the ASR model for better accuracy — just set your language once and everything adapts.</p>
+        <div style="margin-top:20px;">
+            <button onclick="var el=document.getElementById('lang-list');var btn=this;if(el.style.display==='none'){el.style.display='block';btn.querySelector('.arrow').style.transform='rotate(180deg)';btn.querySelector('.label').textContent='Hide all 99 languages';}else{el.style.display='none';btn.querySelector('.arrow').style.transform='';btn.querySelector('.label').textContent='Show all 99 languages';}" style="display:flex;align-items:center;gap:6px;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--ink-3);background:none;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;">
+                <span class="label">Show all 99 languages</span>
+                <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transition:transform .2s;"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <p id="lang-list" style="display:none;margin-top:16px;font-size:12px;color:var(--ink-3);line-height:2;">English, French, Spanish, Chinese, Hindi, Arabic, Portuguese, Bengali, Russian, Japanese, German, Korean, Indonesian, Turkish, Vietnamese, Italian, Thai, Persian, Polish, Ukrainian, Romanian, Dutch, Greek, Czech, Swedish, Hungarian, Finnish, Norwegian, Danish, Hebrew, Malay, Tagalog, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Urdu, Nepali, Sinhala, Myanmar, Khmer, Lao, Tibetan, Mongolian, Uzbek, Kazakh, Azerbaijani, Turkmen, Tajik, Pashto, Georgian, Armenian, Amharic, Somali, Swahili, Hausa, Yoruba, Zulu, Shona, Lingala, Malagasy, Afrikaans, Catalan, Galician, Basque, Welsh, Breton, Occitan, Luxembourgish, Maltese, Icelandic, Faroese, Estonian, Latvian, Lithuanian, Slovak, Slovenian, Croatian, Bosnian, Serbian, Bulgarian, Macedonian, Albanian, Belarusian, Bashkir, Tatar, Cantonese, Javanese, Sundanese, Maori, Hawaiian, Latin, Sanskrit, Sindhi, Assamese, Nynorsk, Yiddish</p>
         </div>
-
-        <h3 style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:16px;">Speech Recognition (99 languages via Whisper)</h3>
-        <p style="font-size:13px;color:var(--ink-3);line-height:2;">English, French, Spanish, Chinese, Hindi, Arabic, Portuguese, Bengali, Russian, Japanese, German, Korean, Indonesian, Turkish, Vietnamese, Italian, Thai, Persian, Polish, Ukrainian, Romanian, Dutch, Greek, Czech, Swedish, Hungarian, Finnish, Norwegian, Danish, Hebrew, Malay, Tagalog, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Urdu, Nepali, Sinhala, Myanmar, Khmer, Lao, Thai, Tibetan, Mongolian, Uzbek, Kazakh, Azerbaijani, Turkish, Turkmen, Tajik, Pashto, Kurdish, Georgian, Armenian, Amharic, Somali, Swahili, Hausa, Yoruba, Zulu, Shona, Lingala, Malagasy, Afrikaans, Catalan, Galician, Basque, Welsh, Breton, Occitan, Luxembourgish, Maltese, Icelandic, Faroese, Estonian, Latvian, Lithuanian, Slovak, Slovenian, Croatian, Bosnian, Serbian, Bulgarian, Macedonian, Albanian, Belarusian, Bashkir, Tatar, Cantonese, Javanese, Sundanese, Maori, Hawaiian, Latin, Sanskrit, Sindhi, Assamese, Nynorsk, Yiddish</p>
+    </div>
+    <div class="feature-visual">
+        <div class="fv-inner">
+            <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">UI &amp; Prompts</div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">English</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">Fran&ccedil;ais</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">Espa&ntilde;ol</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#31616;&#20307;&#20013;&#25991;</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#32321;&#39636;&#20013;&#25991;</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">Portugu&ecirc;s</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#26085;&#26412;&#35486;</span>
+                    <span style="padding:5px 12px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;font-size:12px;color:#eee;">&#54620;&#44397;&#50612;</span>
+                </div>
+                <div style="border-top:1px solid #333;margin-top:12px;padding-top:12px;">
+                    <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Speech Recognition</div>
+                    <div style="display:flex;align-items:baseline;gap:8px;">
+                        <span style="font-size:36px;font-weight:700;color:#eee;">99</span>
+                        <span style="font-size:13px;color:#888;">languages supported</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
