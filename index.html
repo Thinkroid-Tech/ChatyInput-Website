@@ -978,8 +978,80 @@
     </div>
 </section>
 
-<!-- Feature 9: Languages -->
-<section class="feature-section reveal" id="languages">
+<!-- Feature 9: Smart Modes -->
+<section class="feature-section reveal">
+    <div class="feature-text">
+        <span class="feature-tag">Smart Modes</span>
+        <h2>AI picks the right tone</h2>
+        <p>Each mode has a trigger condition — the AI reads your current app and input content, then automatically selects the best mode. Formal in Gmail, concise in Slack, friendly in WhatsApp, structured in Notion. No manual switching needed. Lock a mode from the keyboard if you want full control, or let the AI decide.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+            <div style="display:flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;padding:6px 12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span style="font-size:12px;color:#ddd;">AI auto-switch</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;padding:6px 12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span style="font-size:12px;color:#ddd;">Custom triggers</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;padding:6px 12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span style="font-size:12px;color:#ddd;">Force lock per app</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;padding:6px 12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span style="font-size:12px;color:#ddd;">IME mode button</span>
+            </div>
+        </div>
+    </div>
+    <div class="feature-visual">
+        <div class="fv-inner">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+                <!-- Auto indicator -->
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                    <div style="background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;">AI</div>
+                    <span style="font-size:12px;color:#888;">detects app + content → picks mode</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid var(--accent);border-radius:8px;padding:10px 14px;">
+                    <span style="font-size:18px;">&#x1F4E7;</span>
+                    <div style="flex:1;">
+                        <div style="font-size:13px;color:#eee;font-weight:600;">Business Email</div>
+                        <div style="font-size:11px;color:#888;">When in email apps or formal messages</div>
+                    </div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #383838;border-radius:8px;padding:10px 14px;">
+                    <span style="font-size:18px;">&#x1F4AC;</span>
+                    <div style="flex:1;">
+                        <div style="font-size:13px;color:#eee;font-weight:600;">Casual Chat</div>
+                        <div style="font-size:11px;color:#888;">When in messaging apps</div>
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #383838;border-radius:8px;padding:10px 14px;">
+                    <span style="font-size:18px;">&#x1F4BB;</span>
+                    <div style="flex:1;">
+                        <div style="font-size:13px;color:#eee;font-weight:600;">Technical Docs</div>
+                        <div style="font-size:11px;color:#888;">When content has technical terms</div>
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #383838;border-radius:8px;padding:10px 14px;">
+                    <span style="font-size:18px;">&#x1F4DD;</span>
+                    <div style="flex:1;">
+                        <div style="font-size:13px;color:#eee;font-weight:600;">Meeting Notes</div>
+                        <div style="font-size:11px;color:#888;">When mentioning meetings or action items</div>
+                    </div>
+                </div>
+                <!-- Lock indicator -->
+                <div style="display:flex;align-items:center;gap:8px;margin-top:4px;padding:6px 10px;background:#1a1a1a;border:1px solid #383838;border-radius:6px;">
+                    <span style="font-size:13px;">&#x1F512;</span>
+                    <span style="font-size:11px;color:#aaa;">Lock a mode from the keyboard to override AI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature 10: Languages -->
+<section class="feature-section reverse reveal" id="languages">
     <div class="feature-text">
         <span class="feature-tag">Multi-language</span>
         <h2>Speak in any language</h2>
@@ -1098,13 +1170,8 @@
             </div>
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Context</div>
-                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Smart Mode Switching</h3>
-                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Auto-switch modes based on the active app, scene, or GPS location. Formal tone in Gmail, concise in Slack, friendly in WhatsApp, structured in Notion, local language near travel destinations.</p>
-            </div>
-            <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
-                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Personalization</div>
-                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Custom Modes</h3>
-                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Create preset profiles with unique prompts, language, dictionary, and tone. Switch between business email, casual chat, technical docs, and meeting notes instantly.</p>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">GPS Mode Switching</h3>
+                <p style="font-size:14px;color:var(--ink-2);line-height:1.6;">Auto-switch modes based on GPS location. Local language near travel destinations, switch to your work mode at the office, casual mode at home.</p>
             </div>
             <div style="border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:var(--card);">
                 <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Learning</div>
