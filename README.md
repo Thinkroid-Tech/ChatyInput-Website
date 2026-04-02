@@ -15,7 +15,7 @@ python3 -m http.server 8901
 
 ## Deployment
 
-Hosted on Cloudflare Pages. Pushes to `main` deploy automatically.
+Hosted on GitHub Pages. Pushes to `main` deploy automatically.
 
 - **Domain:** chatyinput.com
 - **Analytics:** Cloudflare Web Analytics
